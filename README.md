@@ -23,4 +23,4 @@ Backend: Node.js & Express (RESTful API logic).
 
 Frontend: Angular (Dynamic, responsive dashboard).
 
-Language: TypeScript/JavaScript.
+Language: JavaScript.
