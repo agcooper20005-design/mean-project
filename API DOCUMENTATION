@@ -1,0 +1,48 @@
+THIS IS USED TO KEEP TRACK OF ALL THE EXSISTING APIS
+
+
+
+/api/hello
+just a simple hello template to test connection
+
+
+
+/api/test-structure
+Holds object structureformat, use a HTTP rquest sender to access properly.
+I use IDE Inbuilt HTTP reqester file
+
+
+/api/customers
+Directory to add new customer data file
+For now, this works like the /api/test-structure endpoint.
+When it get suffecent data in the right format
+Ex:
+"customerName": ""
+"phone": ""
+
+it will make a new file based on the phone number in the directory
+/api/customers/XXXXXXXX.json
+or if the phone is 678-000-1234
+it will be
+/api/customers/678-000-1234
+
+
+
+=====
+Added Customer.js .modules/
+This holds a function that forces strict data structure
+it ensures that every JSON recorded is written to the disk fitting the template perfectly to the requirments
+Reference tester.http file for more insite
+
+
+===
+Updated server.js
+integrated customerStructure function to mainserver javascript file (server.js)
+
+===
+small update to .gitignore file
+
+
+
+============================================================
+Next Push Comment Section Below

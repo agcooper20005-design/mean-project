@@ -1,0 +1,15 @@
+### Test MEC-11/12: Actually save a customer file to the directory
+POST http://localhost:3000/api/customers
+Content-Type: application/json
+
+{
+  "customerName": "Andrew Cooper",
+  "phone": "555-999-1234",
+  "email": "andrew@example.com",
+  "carYear": "2021",
+  "carMake": "Dodge",
+  "carModel": "Charger",
+  "vin": "987654321",
+  "storeRepairSubject": "Transmission Fluid Flush"
+}
+###

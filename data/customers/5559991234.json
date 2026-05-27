@@ -1,0 +1,12 @@
+{
+  "customerName": "Andrew Cooper",
+  "phone": "555-999-1234",
+  "email": "andrew@example.com",
+  "carYear": 2021,
+  "carMake": "Dodge",
+  "carModel": "Charger",
+  "vin": 987654321,
+  "storeRepairSubject": "Transmission Fluid Flush",
+  "createAt": "2026-05-27T07:00:39.240Z",
+  "updatedAt": "2026-05-27T07:00:39.241Z"
+}
