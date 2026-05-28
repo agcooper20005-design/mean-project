@@ -1,0 +1,12 @@
+{
+  "customerName": "Huriel Betancourt",
+  "phone": "7704804755",
+  "email": "",
+  "carYear": 2007,
+  "carMake": "Nissan",
+  "carModel": "Pathfinder LE",
+  "vin": 0,
+  "storeRepairSubject": "Oil change\nPerformance Diagnostic.\nTag light.\n2x bulb replacement.\nTPMS Indicator light diagnostic.",
+  "createAt": "2026-05-28T21:08:45.876Z",
+  "updatedAt": "2026-05-28T21:08:45.882Z"
+}
