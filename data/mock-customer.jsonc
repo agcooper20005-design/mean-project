@@ -1,0 +1,121 @@
+{
+  "customer": {
+
+    // ID SORTING NOTE:
+    // mongoose automatically creates this when the customer file is created.
+
+    "_id": "",
+    "firstName": "John",
+    "lastName": "Smith",
+    "phone": "555-123-4567",
+    "email": "john.smith@example.com",
+    "address": {
+      "street": "123 Main Street",
+      "city": "Raleigh",
+      "state": "NC",
+      "zipCode": "27601"
+    }
+  },
+
+  "loginCredentials": {
+    "username": "john.smith@example.com",
+
+    // MEAN ARCHITECTURE NOTE:
+    // In a MEAN app, Angular should only collect the password and send it over HTTPS
+    // to the Express/Node backend.
+    //
+    // Angular should never store, display, or receive the password hash.
+    //
+    // The Express/Node backend should hash the password before saving it to MongoDB.
+    // Common choices are bcrypt or argon2.
+    //
+    // MongoDB should store only the final password hash, not the raw password.
+
+    "passwordHash": null,
+
+    // PASSWORD SALT NOTE:
+    // If you use bcrypt, you usually do not need a separate passwordSalt field.
+    // Bcrypt includes the salt inside the generated hash string.
+    //
+    // That is why this simplified MongoDB version does not include passwordSalt.
+
+    "passwordLastUpdatedAt": null,
+    "lastLoginAt": null,
+    "accountStatus": "active",
+
+    "googleSSO": {
+      // GOOGLE SSO NOTE:
+      // Google SSO allows the customer to log in using their Google account
+      // instead of a local username and password.
+      //
+      // Basic MEAN flow:
+      // 1. Angular shows a "Continue with Google" button.
+      // 2. Google returns an ID token after the user signs in.
+      // 3. Angular sends that token to the Express/Node backend.
+      // 4. The backend verifies the token with Google.
+      // 5. After verification, the backend links the Google account to this MongoDB customer record.
+      //
+      // The backend should trust Google's verified token, not just data sent from Angular.
+
+      "enabled": false,
+      "provider": "google",
+
+      // Google's unique ID for the user.
+      // This is usually the "sub" claim from Google's ID token.
+      // It is safer to use this than email alone because emails can change.
+
+      "googleUserId": null,
+
+      // Email returned by Google.
+      // This can be used to match or link an existing mechanic shop customer account.
+
+      "googleEmail": null,
+
+      // Whether Google says the email address is verified.
+
+      "emailVerified": false,
+
+      // Optional profile photo URL from the customer's Google profile.
+
+      "profilePhotoUrl": null,
+
+      // Last successful Google SSO login timestamp.
+
+      "lastLoginAt": null
+    }
+  },
+
+  "cars": [
+    {
+
+      // Mongoose automatically generates this ObjectId when the a new car is assigned to the customer.
+
+      "_id": "",
+      "year": 2018,
+      "make": "Toyota",
+      "model": "Camry",
+      "trim": "SE",
+      "vin": "1HGCM82633A004352",
+      "licensePlate": "ABC-1234",
+      "mileage": 87500,
+      "color": "Silver",
+      "serviceHistory": [
+        {
+
+          // Mongoose automatically generates this ObjectId when the service record is created.
+
+          "_id": "",
+          "date": "2026-05-30",
+          "serviceType": "Oil Change",
+          "description": "Full synthetic oil change and filter replacement",
+          "mileageAtService": 87500,
+          "cost": 89.99,
+
+          // References the _id of the employee user assigned to or responsible for this service record.
+
+          "technicianUserId": "Mike"
+        }
+      ]
+    }
+  ]
+}

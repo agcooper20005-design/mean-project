@@ -1,0 +1,55 @@
+{
+  "customer": {
+    "_id": "",
+    "firstName": "John",
+    "lastName": "Smith",
+    "phone": "555-123-4567",
+    "email": "john.smith@example.com",
+    "address": {
+      "street": "123 Main Street",
+      "city": "Raleigh",
+      "state": "NC",
+      "zipCode": "27601"
+    }
+  },
+  "loginCredentials": {
+    "username": "john.smith@example.com",
+    "passwordHash": null,
+    "passwordLastUpdatedAt": null,
+    "lastLoginAt": null,
+    "accountStatus": "active",
+    "googleSSO": {
+      "enabled": false,
+      "provider": "google",
+      "googleUserId": null,
+      "googleEmail": null,
+      "emailVerified": false,
+      "profilePhotoUrl": null,
+      "lastLoginAt": null
+    }
+  },
+  "cars": [
+    {
+      "vehicleId": "VEH-001",
+      "year": 2018,
+      "make": "Toyota",
+      "model": "Camry",
+      "trim": "SE",
+      "vin": "1HGCM82633A004352",
+      "licensePlate": "ABC-1234",
+      "mileage": 87500,
+      "color": "Silver",
+      "serviceHistory": [
+        {
+          "serviceId": "SERV-001",
+          "date": "2026-05-30",
+          "serviceType": "Oil Change",
+          "description": "Full synthetic oil change and filter replacement",
+          "mileageAtService": 87500,
+          "cost": 89.99,
+          "technician": "Mike"
+        }
+      ]
+    }
+  ]
+}
