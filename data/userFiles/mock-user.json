@@ -1,0 +1,121 @@
+{
+  "user": {
+    "_id": "",
+    "firstName": "Mike",
+    "lastName": "Johnson",
+    "fullName": "Mike Johnson",
+    "phone": "555-987-6543",
+    "email": "mike.johnson@example.com",
+    "role": "technician",
+    "accountStatus": "active",
+    "profilePhotoUrl": null
+  },
+  "loginCredentials": {
+    "username": "mike.johnson@example.com",
+    "passwordHash": null,
+    "passwordLastUpdatedAt": null,
+    "lastLoginAt": null,
+    "loginEnabled": true,
+    "googleSSO": {
+      "enabled": false,
+      "provider": "google",
+      "googleUserId": null,
+      "googleEmail": null,
+      "emailVerified": false,
+      "profilePhotoUrl": null,
+      "lastLoginAt": null
+    }
+  },
+  "technicianProfile": {
+    "technicianId": "TECH-001",
+    "employmentStatus": "active",
+    "skillLevel": "mid",
+    "yearsOfExperience": 4,
+    "certifications": [
+      "ASE Brakes",
+      "ASE Engine Repair"
+    ],
+    "specialties": [
+      "Oil Changes",
+      "Brake Repair",
+      "Engine Diagnostics",
+      "General Maintenance"
+    ],
+    "assignedShopLocation": "Raleigh Main Shop"
+  },
+  "permissions": {
+    "canViewCustomers": true,
+    "canCreateCustomers": false,
+    "canEditCustomers": false,
+    "canDeleteCustomers": false,
+    "canViewCars": true,
+    "canCreateCars": false,
+    "canEditCars": false,
+    "canDeleteCars": false,
+    "canViewServices": true,
+    "canCreateServices": false,
+    "canEditServices": true,
+    "canCloseServices": true,
+    "canDeleteServices": false,
+    "canViewServiceNotes": true,
+    "canCreateServiceNotes": true,
+    "canEditOwnServiceNotes": true,
+    "canEditAllServiceNotes": false,
+    "canDeleteServiceNotes": false,
+    "canManageUsers": false,
+    "canManagePermissions": false
+  },
+  "workAssignments": [
+    {
+      "_id": "",
+      "serviceId": "",
+      "customerId": "",
+      "carId": "",
+      "assignmentStatus": "assigned",
+      "assignedAt": "2026-05-30T09:00:00.000Z",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+  "serviceNoteActivity": [
+    {
+      "_id": "",
+      "serviceId": "",
+      "carId": "",
+      "customerId": "",
+      "noteType": "technicianUpdate",
+      "subject": "Initial Inspection Complete",
+      "message": "Vehicle inspection completed. Front brake pads are worn and should be replaced soon.",
+      "visibility": "internal",
+      "createdAt": "2026-05-30T10:30:00.000Z",
+      "updatedAt": null,
+      "edited": false
+    }
+  ],
+  "schedule": {
+    "availableStatus": "available",
+    "workShift": "morning",
+    "daysAvailable": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "shiftStartTime": "08:00",
+    "shiftEndTime": "17:00"
+  },
+  "performance": {
+    "totalServicesAssigned": 0,
+    "totalServicesCompleted": 0,
+    "openServices": 0,
+    "averageCompletionTimeHours": 0,
+    "reworkCount": 0,
+    "customerSatisfactionAverage": null
+  },
+  "recordKeeping": {
+    "createdAt": "2026-05-30T00:00:00.000Z",
+    "updatedAt": "2026-05-30T00:00:00.000Z",
+    "deactivatedAt": null
+  }
+}

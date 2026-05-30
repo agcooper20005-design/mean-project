@@ -1,0 +1,306 @@
+{
+  "user": {
+
+    // ID SORTING NOTE:
+    // Mongoose automatically creates this when the user file is created.
+
+    "_id": "",
+
+    // USER IDENTITY NOTE:
+    // This section stores the basic internal employee information.
+    // This user could be a technician, mechanic, service writer, manager, or admin.
+
+    "firstName": "Mike",
+    "lastName": "Johnson",
+    "fullName": "Mike Johnson",
+    "phone": "555-987-6543",
+    "email": "mike.johnson@example.com",
+
+    // USER ROLE NOTE:
+    // Role determines what kind of employee this user is inside the mechanic system.
+    // Permissions should be based on this role.
+
+    "role": "technician",
+
+    // Example roles:
+    // "admin"
+    // "manager"
+    // "serviceWriter"
+    // "technician"
+    // "mechanic"
+    // "partsSpecialist"
+
+    "accountStatus": "active",
+
+    // Example statuses:
+    // "active"
+    // "inactive"
+    // "suspended"
+    // "archived"
+
+    "profilePhotoUrl": null
+  },
+
+  "loginCredentials": {
+    "username": "mike.johnson@example.com",
+
+    // MEAN ARCHITECTURE NOTE:
+    // In a MEAN app, Angular should only collect the password and send it over HTTPS
+    // to the Express/Node backend.
+    //
+    // Angular should never store, display, or receive the password hash.
+    //
+    // The Express/Node backend should hash the password before saving it to MongoDB.
+    // Common choices are bcrypt or argon2.
+    //
+    // MongoDB should store only the final password hash, not the raw password.
+
+    "passwordHash": null,
+
+    // PASSWORD SALT NOTE:
+    // If you use bcrypt, you usually do not need a separate passwordSalt field.
+    // Bcrypt includes the salt inside the generated hash string.
+
+    "passwordLastUpdatedAt": null,
+    "lastLoginAt": null,
+
+    // LOGIN STATUS NOTE:
+    // This controls whether the user can currently access the mechanic system.
+
+    "loginEnabled": true,
+
+    "googleSSO": {
+      // GOOGLE SSO NOTE:
+      // Google SSO allows the employee to log in using their Google account
+      // instead of a local username and password.
+      //
+      // Basic MEAN flow:
+      // 1. Angular shows a "Continue with Google" button.
+      // 2. Google returns an ID token after the user signs in.
+      // 3. Angular sends that token to the Express/Node backend.
+      // 4. The backend verifies the token with Google.
+      // 5. After verification, the backend links the Google account to this MongoDB user record.
+      //
+      // The backend should trust Google's verified token, not just data sent from Angular.
+
+      "enabled": false,
+      "provider": "google",
+
+      // Google's unique ID for the user.
+      // This is usually the "sub" claim from Google's ID token.
+      // It is safer to use this than email alone because emails can change.
+
+      "googleUserId": null,
+
+      // Email returned by Google.
+      // This can be used to match or link an existing employee account.
+
+      "googleEmail": null,
+
+      // Whether Google says the email address is verified.
+
+      "emailVerified": false,
+
+      // Optional profile photo URL from the employee's Google profile.
+
+      "profilePhotoUrl": null,
+
+      // Last successful Google SSO login timestamp.
+
+      "lastLoginAt": null
+    }
+  },
+
+  "technicianProfile": {
+
+    // TECHNICIAN PROFILE NOTE:
+    // This section only matters if the user works on vehicles.
+    // Admins, managers, or service writers may not need all of these fields.
+
+    "technicianId": "TECH-001",
+    "employmentStatus": "active",
+
+    // Example employment statuses:
+    // "active"
+    // "inactive"
+    // "terminated"
+    // "onLeave"
+
+    "skillLevel": "mid",
+
+    // Example skill levels:
+    // "trainee"
+    // "junior"
+    // "mid"
+    // "senior"
+    // "master"
+
+    "yearsOfExperience": 4,
+
+    "certifications": [
+      "ASE Brakes",
+      "ASE Engine Repair"
+    ],
+
+    // Specialties may change to a more structured allowance of what technicians are allowed to work on. 
+
+    "specialties": [
+      "Oil Changes",
+      "Brake Repair",
+      "Engine Diagnostics",
+      "General Maintenance"
+    ],
+
+    "assignedShopLocation": "Raleigh Main Shop"
+  },
+
+  "permissions": {
+
+    // PERMISSION NOTE:
+    // These control what the employee can see or change.
+    // A technician may update services and service notes.
+    // A manager or admin may have broader access.
+
+    "canViewCustomers": true,
+    "canCreateCustomers": false,
+    "canEditCustomers": false,
+    "canDeleteCustomers": false,
+
+    "canViewCars": true,
+    "canCreateCars": false,
+    "canEditCars": false,
+    "canDeleteCars": false,
+
+    "canViewServices": true,
+    "canCreateServices": false,
+    "canEditServices": true,
+    "canCloseServices": true,
+    "canDeleteServices": false,
+
+    "canViewServiceNotes": true,
+    "canCreateServiceNotes": true,
+    "canEditOwnServiceNotes": true,
+    "canEditAllServiceNotes": false,
+    "canDeleteServiceNotes": false,
+
+    "canManageUsers": false,
+    "canManagePermissions": false
+  },
+
+  "workAssignments": [
+    {
+
+      // WORK ASSIGNMENT NOTE:
+      // This references a service record assigned to this user.
+      // In the full database, serviceId should point to the _id of a service document.
+
+      "_id": "",
+      "serviceId": "",
+      "customerId": "",
+      "carId": "",
+
+      "assignmentStatus": "assigned",
+
+      // Example assignment statuses:
+      // "assigned"
+      // "inProgress"
+      // "waitingOnParts"
+      // "waitingOnCustomerApproval"
+      // "completed"
+      // "cancelled"
+
+      "assignedAt": "2026-05-30T09:00:00.000Z",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ],
+
+  "serviceNoteActivity": [
+    {
+
+      // SERVICE NOTE ACTIVITY NOTE:
+      // This shows notes created by the user.
+      // In a larger structure, service notes may live in their own collection
+      // and reference the user by userId.
+
+      "_id": "",
+      "serviceId": "",
+      "carId": "",
+      "customerId": "",
+
+      "noteType": "technicianUpdate",
+
+      // Example note types:
+      // "technicianUpdate"
+      // "diagnosis"
+      // "partsRequest"
+      // "managerReview"
+      // "customerConcern"
+      // "finalSummary"
+
+      "subject": "Initial Inspection Complete",
+      "message": "Vehicle inspection completed. Front brake pads are worn and should be replaced soon.",
+
+      "visibility": "internal",
+
+      // Example visibility:
+      // "internal"
+      // "customerVisible"
+      // "managerOnly"
+
+      "createdAt": "2026-05-30T10:30:00.000Z",
+      "updatedAt": null,
+      "edited": false
+    }
+  ],
+
+  "schedule": {
+
+    // SCHEDULE NOTE:
+    // This can be used later for assigning services based on technician availability.
+
+    "availableStatus": "available",
+
+    // Example available statuses:
+    // "available"
+    // "busy"
+    // "offDuty"
+    // "onLeave"
+
+    "workShift": "morning",
+    "daysAvailable": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+
+    "shiftStartTime": "08:00",
+    "shiftEndTime": "17:00"
+  },
+
+  "performance": {
+
+    // PERFORMANCE NOTE:
+    // These values can be calculated later instead of manually entered.
+    // For now, they are useful landmarks for what the system may track.
+
+    "totalServicesAssigned": 0,
+    "totalServicesCompleted": 0,
+    "openServices": 0,
+    "averageCompletionTimeHours": 0,
+    "reworkCount": 0,
+    "customerSatisfactionAverage": null
+  },
+
+  "recordKeeping": {
+
+    // RECORD KEEPING NOTE:
+    // These fields help track when the user record was created or changed.
+
+    "createdAt": "2026-05-30T00:00:00.000Z",
+    "updatedAt": "2026-05-30T00:00:00.000Z",
+    "deactivatedAt": null
+  }
+}
